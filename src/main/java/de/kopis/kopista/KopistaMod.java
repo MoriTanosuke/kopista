@@ -1,6 +1,6 @@
-package com.example.examplemod;
+package de.kopis.kopista;
 
-import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -9,8 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import com.example.examplemod.blocks.AsphaltOre;
+import de.kopis.kopista.blocks.AsphaltOre;
 
 @Mod(modid = KopistaMod.MODID, version = KopistaMod.VERSION)
 public class KopistaMod {
@@ -24,7 +23,9 @@ public class KopistaMod {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         // some example code
-        GameRegistry.registerBlock(new AsphaltOre(), AsphaltOre.NAME);
+        AsphaltOre asphaltOre = new AsphaltOre();
+        GameRegistry.registerBlock(asphaltOre, asphaltOre.getUnlocalizedName());
+        Minecraft.getMinecraft().renderEngine.bindTexture(asphaltOre.getTexture());
     }
 
     @EventHandler
