@@ -1,10 +1,10 @@
 package de.kopis.kopista.blocks;
 
-import de.kopis.kopista.KopistaMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
+import de.kopis.kopista.KopistaMod;
 
 public class GenericBlock extends Block {
 
@@ -21,9 +21,12 @@ public class GenericBlock extends Block {
         setHarvestLevel(HarvestTool.Pickaxe.value(), HarvestLevel.Stone.value());
     }
 
-    public ResourceLocation getTexture() {
-        //TODO load texture for block
-        return new ResourceLocation(KopistaMod.MODID, name + ".png");
+    public String getName() {
+        return name;
+    }
+
+    public String getTexture() {
+        return KopistaMod.MODID + ":" + name;
     }
 
     protected enum HarvestTool {
