@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import de.kopis.kopista.blocks.AsphaltOre;
+import de.kopis.kopista.world.KopistaWorldGeneration;
 
 @Mod(modid = KopistaMod.MODID, version = KopistaMod.VERSION)
 public class KopistaMod {
@@ -41,6 +42,9 @@ public class KopistaMod {
     @EventHandler
     public void load(FMLInitializationEvent event) {
         FMLLog.info("load called");
+
+        // register world generator
+        GameRegistry.registerWorldGenerator(new KopistaWorldGeneration(), 1);
     }
 
     @EventHandler
