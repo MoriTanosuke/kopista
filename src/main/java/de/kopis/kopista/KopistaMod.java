@@ -16,39 +16,47 @@ import de.kopis.kopista.world.KopistaWorldGeneration;
 
 @Mod(modid = KopistaMod.MODID, version = KopistaMod.VERSION)
 public class KopistaMod {
-    @Instance(value = KopistaMod.MODID)
-    // Tell Forge what instance to use.
-    public static KopistaMod instance;
+	@Instance(value = KopistaMod.MODID)
+	public static KopistaMod instance;
 
-    public static final String MODID = "kopista";
-    public static final String VERSION = "0.0.1";
+	public static final String MODID = "kopista";
+	public static final String VERSION = "0.0.1";
 
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        // some example code
-        AsphaltOre asphaltOre = new AsphaltOre();
-        GameRegistry.registerBlock(asphaltOre, asphaltOre.getName());
-        Item itemBlockSimple = GameRegistry.findItem(MODID, asphaltOre.getName());
-        ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(asphaltOre.getTexture(), "inventory");
-        final int DEFAULT_ITEM_SUBTYPE = 0;
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlockSimple, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
-    }
+	public static final AsphaltOre ASPHALTORE = new AsphaltOre();
 
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        FMLLog.info("preInit called");
-    }
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		// some example code
+		GameRegistry.registerBlock(ASPHALTORE, ASPHALTORE.getName());
+		Item itemBlockSimple = GameRegistry.findItem(MODID,
+				ASPHALTORE.getName());
+		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(
+				ASPHALTORE.getTexture(), "inventory");
+		final int DEFAULT_ITEM_SUBTYPE = 0;
+		Minecraft
+				.getMinecraft()
+				.getRenderItem()
+				.getItemModelMesher()
+				.register(itemBlockSimple, DEFAULT_ITEM_SUBTYPE,
+						itemModelResourceLocation);
+	}
 
-    @EventHandler
-    public void load(FMLInitializationEvent event) {
-        FMLLog.info("load called");
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		FMLLog.info("preInit called");
+	}
 
-        // register world generator
-        GameRegistry.registerWorldGenerator(new KopistaWorldGeneration(), 1);
-    }
+	@EventHandler
+	public void load(FMLInitializationEvent event) {
+		FMLLog.info("load called");
 
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        FMLLog.info("postInit called");
-    }
+		// register world generator
+		int generationWeight = 1;
+		GameRegistry.registerWorldGenerator(new KopistaWorldGeneration(), generationWeight);
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		FMLLog.info("postInit called");
+	}
 }
