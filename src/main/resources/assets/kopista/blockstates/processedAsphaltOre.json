@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "kopista:asphaltOre" }
+        "normal": { "model": "kopista:processedAsphaltOre" }
     }
 }
