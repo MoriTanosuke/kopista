@@ -3,9 +3,9 @@ Simple minecraft mod that will introduce
 
 * a new ore
 * a new machine to process the ore
-* a processed resut
+* a processed result
 * a crafting recipe using the processed result for a new block
-* a buff that the player gets when standing on the crafted block
+* a buff that the player gets when standing or walking on the crafted block
 
 Basically this is a mod that will touch all major parts of Minecraft, to give me a playground for ideas.
 
